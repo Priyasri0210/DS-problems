@@ -1,0 +1,5 @@
+Hello, this is a sample file.
+
+ Python file handling is easy
+
+ Appending a new line to the file
