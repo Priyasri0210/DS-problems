@@ -7,4 +7,8 @@ with open("C:/Users/DELL/OneDrive/Desktop/demo-repo/DS-problems/sample.txt",'r')
     data=f.read()
     print(data)
     #f.close()
+print(len(data))
+
+
 print("done")
+
