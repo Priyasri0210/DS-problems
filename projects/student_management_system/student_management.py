@@ -2,8 +2,8 @@ import json
 import uuid
 
 #load the database
-# json.load()
-# json.dump()
+# json.load() --> read the file
+# json.dump() --> write into file
 def load_data():
     with open('E:/Git/DS-problems/projects/student_management_system/sample.json','r') as f:
         students_db = json.load(f)
@@ -65,4 +65,26 @@ def delete_student(students_db):
         del students_db[student_id]
         save_data(students_db)
         print('Student details deleted successfully')
+
+def view_students(students_db):
+    #checking the student_db is empty or not
+    if students_db:
+        for sid, details in students_db.items():
+            print("ID : {}, Name : {}, Age : {}, Course : {}, Marks : {}".format(sid,details['Name'],details['Age'],details['Course'],details['Marks']))
+    else:
+        print('No students in database')
+
+def course_statistics(students_db):
+    if students_db:
+        stats = {}
+        for key,val in students_db.items():
+            course_name = val['Course']
+            if course_name in stats:
+                #assigning the value = getting the value of key
+                stats[course_name] = stats[course_name] + 1
+            else:
+                stats[course_name] = 1
+        print(stats)
+    else:
+        print("No students in database")
     
