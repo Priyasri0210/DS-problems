@@ -17,6 +17,7 @@ def save_data(data):
 def add_student(students_db):
     try:
         student_id = input("Enter student Id")
+        #it checks the key
         if student_id in students_db:
             print('Student is already registered')
             return None
