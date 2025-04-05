@@ -2,8 +2,8 @@ import json
 import uuid
 
 #load the database
-# json.load()
-# json.dump()
+# json.load() --> read the file
+# json.dump() --> write into file
 def load_data():
     with open('C:/Users/DELL/OneDrive/Desktop/demo-repo/DS-problems/projects/student_management_system/sample.json','r') as f:
         students_db = json.load(f)
@@ -17,6 +17,7 @@ def save_data(data):
 def add_student(students_db):
     try:
         student_id = input("Enter student Id")
+        #it checks the key
         if student_id in students_db:
             print('Student is already registered')
             return None
@@ -64,9 +65,4 @@ def delete_student(students_db):
         del students_db[student_id]
         save_data(students_db)
         print('Student details deleted successfully')
-
-
-
-
-
     

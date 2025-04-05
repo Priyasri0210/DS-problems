@@ -10,7 +10,9 @@ def display_menu():
     print("2. Search Student by ID")
     print("3. Update Student details")
     print("4. Delete Students")
-    print("5. Exit")
+    print("5. View Students")
+    print("6. Course Statistics")
+    print("7. Exit")
 
 
 def main():
@@ -29,6 +31,10 @@ def main():
         elif choice == 4:
             delete_student(students_db)
         elif choice == 5:
+            view_students(students_db)
+        elif choice == 6:
+            course_statistics(students_db)
+        elif choice == 7:
             break
         else:
             print('Invalid input')
