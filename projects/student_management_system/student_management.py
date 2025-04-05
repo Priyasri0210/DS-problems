@@ -5,12 +5,12 @@ import uuid
 # json.load()
 # json.dump()
 def load_data():
-    with open('E:/Git/DS-problems/projects/student_management_system/sample.json','r') as f:
+    with open('C:/Users/DELL/OneDrive/Desktop/demo-repo/DS-problems/projects/student_management_system/sample.json','r') as f:
         students_db = json.load(f)
         return students_db
 
 def save_data(data):
-    with open('E:/Git/DS-problems/projects/student_management_system/sample.json','w') as f:
+    with open('C:/Users/DELL/OneDrive/Desktop/demo-repo/DS-problems/projects/student_management_system/sample.json','w') as f:
         json.dump(data,f)
 
 
@@ -64,4 +64,9 @@ def delete_student(students_db):
         del students_db[student_id]
         save_data(students_db)
         print('Student details deleted successfully')
+
+
+
+
+
     
