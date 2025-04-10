@@ -24,7 +24,7 @@ select title, author from books;
 select * from members where join_date > '2023-01-01';
 
 -- SET SQL_SAFE_UPDATES = 0;
-update books set title = 'Advanced python' where Book_id = 103;
-delete from books where Book_id = 102;
+update books set title = 'Advanced python' where Book_id = 3;
+delete from books where Book_id = 2;
 select * from books;
 
