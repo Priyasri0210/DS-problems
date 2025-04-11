@@ -31,4 +31,14 @@ from film;
 
 select first_name,last_name from customer where customer_id NOT IN ( select distinct customer_id from rental);
 
-select *  from rental
+select *  from rental;
+
+select title from film where film_id IN
+ (select film_id from film_category where category_id IN
+  (select category_id from category where name IN
+   ('comedy','Action','Drama')));
+
+select first_name,last_name from customer where address_id IN
+ (select address_id from address where city_id IN
+ (select city_id from city where country_id IN
+ (select country_id from country where country = 'canada')));
