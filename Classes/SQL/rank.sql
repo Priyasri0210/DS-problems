@@ -22,3 +22,9 @@ from film
 select title,length,
 dense_rank() over (order by length desc) as Ranking
 from film
+
+--exists
+select * from customer c
+where exists (
+select 1 from rental_temp r where r.customer_id = c.customer_id
+)
