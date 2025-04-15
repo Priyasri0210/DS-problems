@@ -17,3 +17,15 @@
  
  -- Delete 
  delete from Employees where id = 1
+
+
+
+ --DDL
+ --DML
+ --DCL -- Database Admins (grant,revoke)
+ --TCL
+
+
+
+ 1 - 10 ---> changed
+ 11 - 1000 ---> unchanged

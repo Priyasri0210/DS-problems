@@ -1,5 +1,7 @@
 
-select c.customer_id,c.first_name,c.last_name,count(r.rental_id) as rental_count,
+select c.customer_id,
+concat(c.first_name,' ' , c.last_name) as Full_name,
+count(r.rental_id) as rental_count,
  rank() over (order by count(r.rental_id) desc) as ranking
  from customer c
  inner join rental r on c.customer_id = r.customer_id
