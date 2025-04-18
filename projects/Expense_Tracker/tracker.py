@@ -2,8 +2,8 @@ import pymysql
 
 #connect to Mysql
 connection = pymysql.connect(host='localhost',
-                             user='bharath',
-                             password='12345678',
+                             user='Priya',
+                             password='654321',
                              db='expense_tracker',
                              charset='utf8mb4',
                              cursorclass=pymysql.cursors.DictCursor)
@@ -68,3 +68,29 @@ def delete_expense():
     cursor.execute("Delete from expenses where category_id = %s",(cat_id))
     connection.commit()
     print('Expense deleted successfully')
+
+def filter_by_category():
+    category = input('Enter the category name : ')
+    cat_id = get_category_id(category)
+    if not cat_id:
+        print('Category not found in our database')
+        return None
+    
+    cursor.execute('''select e.Id,e.amount, e.description, e.date, c.name as category
+                        from expenses e
+                        inner join categories c on e.category_id = c.Id where e.category_id = %s''',(cat_id))
+    result = cursor.fetchall()
+    print("ID | Amount | Description | Date | category")
+    for exp in result:
+        print(str(exp['Id']) + "|" + str(exp['amount']) + "|" + str(exp['description']) + '|' + str(exp['date']) + "|" + str(exp['category']))
+        
+def count_by_month():
+    month = input('Enter the month(in words format): ')
+    
+    cursor.execute(''' select monthname(date) as month,count(*) as total_count from expenses 
+                   where monthname(date) = %s group by month''',(month))
+    result = cursor.fetchall()
+    print(result)
+    if not result:
+        print('No expenses for this month')
+        return None
