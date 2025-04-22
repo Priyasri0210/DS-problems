@@ -11,9 +11,6 @@ connection = pymysql.connect(host='localhost',
 
 cursor = connection.cursor()
 
-# cursor.execute('select * from expenses')
-# result = cursor.fetchall()
-# print(result)
 
 def get_category_id(name):
     cursor.execute('select id from categories where name = %s',(name))
@@ -68,3 +65,24 @@ def delete_expense():
     cursor.execute("Delete from expenses where category_id = %s",(cat_id))
     connection.commit()
     print('Expense deleted successfully')
+
+def total_by_month():
+    month = input("Enter month (YYYY-MM): ")
+    query = "SELECT SUM(amount) as total_sum,count(*) as total_count FROM expenses WHERE DATE_FORMAT(date, '%Y-%m') = '{}'".format(month)
+    cursor.execute(query)
+    total = cursor.fetchone()
+    print(f"Total spent in {month}: ₹{total['total_sum'] if total else 0}")
+    print(f"Total count in {month}: {total['total_count'] if total else 0}")
+
+def total_by_category():
+    category = input('Enter Category : ')
+    cat_id = get_category_id(category)
+    if not cat_id:
+        print('Category not found in our database')
+        return None
+    
+    query = "SELECT SUM(amount) as total_sum,count(*) as total_count FROM expenses WHERE category_id = {}".format(cat_id)
+    cursor.execute(query)
+    total = cursor.fetchone()
+    print(f"Total spent in {category}: ₹{total['total_sum'] if total else 0}")
+    print(f"Total count in {category}: {total['total_count'] if total else 0}")

@@ -1,11 +1,14 @@
 create database expense_tracker
 use expense_tracker
 
+-- Create Categories table
 create table categories(
  Id Int auto_increment Primary key,
  name Varchar(50) unique
  )
 
+
+-- Create Expenses table
 create table expenses (
   Id Int auto_increment Primary key,
   amount Decimal(10,2),
@@ -17,6 +20,7 @@ create table expenses (
   on update cascade
   )
 
+-- Insert categories
   INSERT INTO categories (name) VALUES
 ('Food'),
 ('Transport'),
@@ -29,7 +33,7 @@ create table expenses (
 ('Travel'),
 ('Miscellaneous');
 
-
+-- Insert sample expense
 INSERT INTO expenses (amount, description, date, category_id) VALUES
 (80.00, 'Bus pass for April', '2025-04-02', 2)
 
