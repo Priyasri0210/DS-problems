@@ -10,8 +10,9 @@ def display_menu():
     print("3. Add new category")
     print("4. Delete Expenses")
     print("5. Total by Month")
-    print("6. Total by Category")
-    print("7. Exit")
+    print("6. filter by category")
+    print("7. Month statistics")
+    print("8. Exit")
 
 
 def main():
@@ -30,8 +31,10 @@ def main():
         elif choice == 5:
             total_by_month()
         elif choice == 6:
-            total_by_category()
+            filter_by_category()
         elif choice == 7:
+            count_by_month()
+        elif choice == 8:
             break
         else:
             print('Invalid input')

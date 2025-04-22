@@ -2,8 +2,8 @@ import pymysql
 
 #connect to Mysql
 connection = pymysql.connect(host='localhost',
-                             user='bharath',
-                             password='12345678',
+                             user='Priya',
+                             password='654321',
                              db='expense_tracker',
                              charset='utf8mb4',
                              cursorclass=pymysql.cursors.DictCursor)
@@ -74,15 +74,32 @@ def total_by_month():
     print(f"Total spent in {month}: ₹{total['total_sum'] if total else 0}")
     print(f"Total count in {month}: {total['total_count'] if total else 0}")
 
-def total_by_category():
-    category = input('Enter Category : ')
+def filter_by_category():
+    category = input('Enter the category name : ')
     cat_id = get_category_id(category)
     if not cat_id:
         print('Category not found in our database')
         return None
-    
     query = "SELECT SUM(amount) as total_sum,count(*) as total_count FROM expenses WHERE category_id = {}".format(cat_id)
     cursor.execute(query)
     total = cursor.fetchone()
     print(f"Total spent in {category}: ₹{total['total_sum'] if total else 0}")
     print(f"Total count in {category}: {total['total_count'] if total else 0}")
+    cursor.execute('''select e.Id,e.amount, e.description, e.date, c.name as category
+                        from expenses e
+                        inner join categories c on e.category_id = c.Id where e.category_id = %s''',(cat_id))
+    result = cursor.fetchall()
+    print("ID | Amount | Description | Date | category")
+    for exp in result:
+        print(str(exp['Id']) + "|" + str(exp['amount']) + "|" + str(exp['description']) + '|' + str(exp['date']) + "|" + str(exp['category']))
+        
+def count_by_month():
+    month = input('Enter the month(in words format): ')
+    
+    cursor.execute(''' select monthname(date) as month,count(*) as total_count from expenses 
+                   where monthname(date) = %s group by month''',(month))
+    result = cursor.fetchall()
+    print(result)
+    if not result:
+        print('No expenses for this month')
+        return None
