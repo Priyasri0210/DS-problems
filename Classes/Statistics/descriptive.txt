@@ -1,0 +1,38 @@
+Statistics:
+Analysis and get come inferences and conclude some solutions
+
+age - 1 - 10(1 crore)
+10 - 30(20 crore)
+
+Types of Statistics
+1.Descriptive 
+2.Inferential
+
+Descriptive - it summarizes and describes the main features (data analyst)
+Inferential - make predictions out of it (data scientist)
+
+Descriptive:
+1. Measure of central tendency = find the center point in the dataset
+2. Dispersion of data points  = find how the data is spead
+
+Measure of central tendency
+1. Mean
+2. Median
+3. Mode
+
+Mean - Average
+[1,4,2,7,3] --> 17/5 --> 3.4
+[1,4,2,7,40] ---> 54/5 --> 18
+
+Median - Middle value
+[1,4,2,7,3] --> sort(asc) --> [1,2,3,4,7] --> 3
+[1,4,2,7,3,5] --> sort(asc) --> [1,2,3,4,5,7] --> (middle numbers) --> (3+4)/2 --> 3.5
+
+Mode - More frequent values
+[1,2,4,5,2,3,7] ---> sort(asc) --> [1,2,2,3,4,5,7] - 2
+[1,2,4,5,2,3,7,7] --> sort(asc) --> [1,2,2,3,4,5,7,7] - 2 and 7
+
+
+Mean(avg) --> Software Engineer - salary, get average salary out of it
+Median --> (100000, 50000, 25000) -- (25000,50000,100000) 
+Mode ---> [200,500,700,1000] --> [200,200,500,700,1000,200,500] - popularity(importing more 200rs tshirt)
